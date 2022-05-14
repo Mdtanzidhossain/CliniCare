@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+      <form class="product-form" action="/admin/<%  if (editing) { %>edit-driver<% } else { %>add-product<% } %>" method="POST">
+        <div class="form-control">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" value="<%  if (editing) { %><%= driver.name %><% }%>" />
+        </div>
+        <div class="form-control">
+          <label for="imageUrl">Image URL</label>
+          <input type="text" name="imageUrl" id="imageUrl" value="<%  if (editing) { %><%= driver.imageUrl %><% }%>"/>
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" cols="30" rows="10" ><%  if (editing) { %><%= driver.description %><% }%></textarea>
+        </div>
+        <div class="form-control">
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" id="phone" value="<%  if (editing) { %><%= driver.phone %><% }%>"/>
+        </div>
+        <% if (editing)  { %>
+            <input type="hidden" value="<%= driver._id %>" name="driverId">
+        <% } %>
+        <button type="submit"><% if (editing) { %>Update Driver <% } else { %> Add Driver <% } %></button>
+      </form>
+    </main>
+
+<%- include('../includes/end.ejs') %>

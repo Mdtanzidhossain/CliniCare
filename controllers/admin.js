@@ -3,29 +3,17 @@ const Driver = require('../models/driver')
 const Ambulance = require('../models/ambulance')
 const { ObjectId } = require('mongodb')
 
-
-
-exports.postAddProduct = (req, res, next) => {
-  const { title, imageUrl, price, description } = req.body
-  const product = new Product(
-    title,
-    imageUrl,
-    description,
-    price,
-    null,
-    req.user._id
-  )
-  product
-    .save()
-    .then((result) => {
-      console.log('Created Product')
-      res.redirect('/admin/products')
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-  // res.redirect('/')
+exports.getAddProduct = (req, res, next) => {
+  //   next() // allows the req to continue to the next middleware in line
+  // res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
+  res.render('admin/edit-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
+    editing: false,
+  })
 }
+
+
 
 
 

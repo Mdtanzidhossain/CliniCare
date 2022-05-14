@@ -8,3 +8,25 @@ exports.getAddAmbulance = (req, res, next) => {
       editing: false,
     })
   }
+
+  exports.postAddAmbulance = (req, res, next) => {
+    const { name, imageUrl, description, phone } = req.body
+    const driver = new Driver(
+      name,
+      imageUrl,
+      description,
+      phone,
+      null
+      // req.user._id
+    )
+    ambulance
+      .save()
+      .then((result) => {
+        console.log('Created Driver')
+        // res.redirect('/admin/drivers')
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+    // res.redirect('/')
+  }

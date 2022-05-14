@@ -27,4 +27,6 @@ class Ambulance {
         console.log(err)
       })
   }
+
 }
+module.exports = Ambulance
